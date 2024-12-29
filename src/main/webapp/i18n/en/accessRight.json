@@ -1,0 +1,28 @@
+{
+  "jhipstertenantappApp": {
+    "accessRight": {
+      "home": {
+        "title": "Access Rights",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Access Right",
+        "createOrEditLabel": "Create or edit a Access Right",
+        "notFound": "No Access Rights found"
+      },
+      "created": "A new Access Right is created with identifier {{ param }}",
+      "updated": "A Access Right is updated with identifier {{ param }}",
+      "deleted": "A Access Right is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Access Right {{ id }}?"
+      },
+      "detail": {
+        "title": "Access Right"
+      },
+      "id": "ID",
+      "canRead": "Can Read",
+      "canWrite": "Can Write",
+      "canDelete": "Can Delete",
+      "module": "Module",
+      "employee": "Employee"
+    }
+  }
+}

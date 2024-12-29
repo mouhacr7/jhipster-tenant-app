@@ -1,0 +1,27 @@
+{
+  "jhipstertenantappApp": {
+    "moduleSubscription": {
+      "home": {
+        "title": "ModuleSubscriptions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Module Subscription",
+        "createOrEditLabel": "Créer ou éditer un Module Subscription",
+        "notFound": "Aucun Module Subscription trouvé"
+      },
+      "created": "Un nouveau Module Subscription a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Module Subscription avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Module Subscription avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Module Subscription {{ id }} ?"
+      },
+      "detail": {
+        "title": "Module Subscription"
+      },
+      "id": "ID",
+      "subscriptionDate": "Subscription Date",
+      "active": "Active",
+      "module": "Module",
+      "client": "Client"
+    }
+  }
+}

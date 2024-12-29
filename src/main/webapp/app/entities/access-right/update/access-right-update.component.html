@@ -1,0 +1,110 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-access-right-heading"
+        data-cy="AccessRightCreateUpdateHeading"
+        jhiTranslate="jhipstertenantappApp.accessRight.home.createOrEditLabel"
+      >
+        Créer ou éditer un Access Right
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipstertenantappApp.accessRight.canRead" for="field_canRead">Can Read</label>
+          <input type="checkbox" class="form-check" name="canRead" id="field_canRead" data-cy="canRead" formControlName="canRead" />
+          <div *ngIf="editForm.get('canRead')!.invalid && (editForm.get('canRead')!.dirty || editForm.get('canRead')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('canRead')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipstertenantappApp.accessRight.canWrite" for="field_canWrite">Can Write</label>
+          <input type="checkbox" class="form-check" name="canWrite" id="field_canWrite" data-cy="canWrite" formControlName="canWrite" />
+          <div *ngIf="editForm.get('canWrite')!.invalid && (editForm.get('canWrite')!.dirty || editForm.get('canWrite')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('canWrite')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipstertenantappApp.accessRight.canDelete" for="field_canDelete">Can Delete</label>
+          <input type="checkbox" class="form-check" name="canDelete" id="field_canDelete" data-cy="canDelete" formControlName="canDelete" />
+          <div *ngIf="editForm.get('canDelete')!.invalid && (editForm.get('canDelete')!.dirty || editForm.get('canDelete')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('canDelete')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipstertenantappApp.accessRight.module" for="field_module">Module</label>
+          <select
+            class="form-control"
+            id="field_module"
+            data-cy="module"
+            name="module"
+            formControlName="module"
+            [compareWith]="compareModule"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="moduleOption" *ngFor="let moduleOption of modulesSharedCollection">{{ moduleOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="jhipstertenantappApp.accessRight.employee" for="field_employee">Employee</label>
+          <select
+            class="form-control"
+            id="field_employee"
+            data-cy="employee"
+            name="employee"
+            formControlName="employee"
+            [compareWith]="compareEmployee"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="employeeOption" *ngFor="let employeeOption of employeesSharedCollection">{{ employeeOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20241227185535",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "license",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "license",
+  "name": "License",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "module",
+      "otherEntityRelationshipName": "licenses",
+      "relationshipName": "module",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

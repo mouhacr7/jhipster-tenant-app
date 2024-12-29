@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20241227185539",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "module_subscription",
+  "fields": [
+    {
+      "fieldName": "subscriptionDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "license",
+  "name": "ModuleSubscription",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "module",
+      "relationshipName": "module",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "moduleSubscriptions",
+      "relationshipName": "client",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

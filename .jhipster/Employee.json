@@ -1,0 +1,56 @@
+{
+  "applications": "*",
+  "changelogDate": "20241227185537",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "employee",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "UserRole",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ADMIN,MANAGER,EMPLOYEE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "license",
+  "name": "Employee",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "module",
+      "otherEntityRelationshipName": "employees",
+      "ownerSide": true,
+      "relationshipName": "accessRights",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "employees",
+      "relationshipName": "client",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

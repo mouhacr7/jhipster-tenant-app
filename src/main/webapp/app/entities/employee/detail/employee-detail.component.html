@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employee">
+      <h2 data-cy="employeeDetailsHeading"><span jhiTranslate="jhipstertenantappApp.employee.detail.title">Employee</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employee.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipstertenantappApp.employee.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ employee.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipstertenantappApp.employee.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ employee.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipstertenantappApp.employee.email">Email</span></dt>
+        <dd>
+          <span>{{ employee.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipstertenantappApp.employee.phone">Phone</span></dt>
+        <dd>
+          <span>{{ employee.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipstertenantappApp.employee.role">Role</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'jhipstertenantappApp.UserRole.' + employee.role }}">{{ employee.role }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipstertenantappApp.employee.accessRights">Access Rights</span></dt>
+        <dd>
+          <span *ngFor="let accessRights of employee.accessRights; let last = last">
+            <a [routerLink]="['/module', accessRights.id, 'view']">{{ accessRights.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="jhipstertenantappApp.employee.client">Client</span></dt>
+        <dd>
+          <div *ngIf="employee.client">
+            <a [routerLink]="['/client', employee.client.id, 'view']">{{ employee.client.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employee', employee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

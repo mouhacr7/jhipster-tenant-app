@@ -1,0 +1,27 @@
+{
+  "jhipstertenantappApp": {
+    "moduleSubscription": {
+      "home": {
+        "title": "Module Subscriptions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Module Subscription",
+        "createOrEditLabel": "Create or edit a Module Subscription",
+        "notFound": "No Module Subscriptions found"
+      },
+      "created": "A new Module Subscription is created with identifier {{ param }}",
+      "updated": "A Module Subscription is updated with identifier {{ param }}",
+      "deleted": "A Module Subscription is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Module Subscription {{ id }}?"
+      },
+      "detail": {
+        "title": "Module Subscription"
+      },
+      "id": "ID",
+      "subscriptionDate": "Subscription Date",
+      "active": "Active",
+      "module": "Module",
+      "client": "Client"
+    }
+  }
+}

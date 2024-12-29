@@ -1,0 +1,10 @@
+{
+  "jhipstertenantappApp": {
+    "ModuleCategory": {
+      "null": "",
+      "GESTION": "GESTION",
+      "CLIENTELE": "CLIENTELE",
+      "TRANSACTIONS": "TRANSACTIONS"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "applications": "*",
+  "changelogDate": "20241227185534",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "module",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ModuleType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "GESTION,CLIENTELE,TRANSACTIONS"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "ModuleCategory",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "GESTION,CLIENTELE,TRANSACTIONS"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "license",
+  "name": "Module",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "license",
+      "otherEntityRelationshipName": "module",
+      "relationshipName": "licenses",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "accessRights",
+      "ownerSide": false,
+      "relationshipName": "employees",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

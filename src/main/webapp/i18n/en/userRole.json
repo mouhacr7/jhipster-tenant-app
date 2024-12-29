@@ -1,0 +1,10 @@
+{
+  "jhipstertenantappApp": {
+    "UserRole": {
+      "null": "",
+      "ADMIN": "ADMIN",
+      "MANAGER": "MANAGER",
+      "EMPLOYEE": "EMPLOYEE"
+    }
+  }
+}

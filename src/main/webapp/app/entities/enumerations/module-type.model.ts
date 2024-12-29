@@ -1,0 +1,7 @@
+export enum ModuleType {
+  GESTION = 'GESTION',
+
+  CLIENTELE = 'CLIENTELE',
+
+  TRANSACTIONS = 'TRANSACTIONS',
+}

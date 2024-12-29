@@ -1,0 +1,83 @@
+enum ModuleType {
+    GESTION,
+    CLIENTELE,
+    TRANSACTIONS
+}
+
+enum ModuleCategory {
+    GESTION,
+    CLIENTELE,
+    TRANSACTIONS
+}
+
+enum UserRole {
+    ADMIN,
+    MANAGER,
+    EMPLOYEE
+}
+
+entity Module {
+    name String required
+    description String
+    type ModuleType required
+    category ModuleCategory required
+    active Boolean required
+}
+
+entity License {
+    startDate Instant required
+    endDate Instant required
+    active Boolean required
+}
+
+entity Client {
+    name String required
+    email String required
+    phone String
+    address String
+}
+
+entity Employee {
+    firstName String required
+    lastName String required
+    email String required
+    phone String
+    role UserRole required
+}
+
+entity AccessRight {
+    canRead Boolean required
+    canWrite Boolean required
+    canDelete Boolean required
+}
+
+entity ModuleSubscription {
+    subscriptionDate Instant required
+    active Boolean required
+}
+
+// Relations
+relationship OneToMany {
+    Client{employees} to Employee{client}
+    Client{moduleSubscriptions} to ModuleSubscription{client}
+    Module{licenses} to License{module}
+}
+
+relationship ManyToMany {
+    Employee{accessRights} to Module{employees}
+}
+
+relationship ManyToOne {
+    ModuleSubscription{module} to Module
+    AccessRight{module} to Module
+    AccessRight{employee} to Employee
+}
+
+// Options JHipster
+dto * with mapstruct
+service * with serviceClass
+paginate * with pagination
+filter *
+
+// Microservice options
+microservice * with license

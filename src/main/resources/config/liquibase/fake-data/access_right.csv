@@ -1,0 +1,11 @@
+id;can_read;can_write;can_delete
+1;false;true;false
+2;false;false;true
+3;false;true;true
+4;true;true;true
+5;false;false;true
+6;true;false;false
+7;true;false;false
+8;false;false;true
+9;true;false;true
+10;true;true;true

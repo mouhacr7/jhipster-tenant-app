@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20241227185536",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "client",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "license",
+  "name": "Client",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "employees",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "moduleSubscription",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "moduleSubscriptions",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

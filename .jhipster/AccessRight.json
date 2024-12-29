@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20241227185538",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "access_right",
+  "fields": [
+    {
+      "fieldName": "canRead",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "canWrite",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "canDelete",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "license",
+  "name": "AccessRight",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "module",
+      "relationshipName": "module",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "employee",
+      "relationshipName": "employee",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,9 +1,14 @@
 package com.tenant.app.service;
 
+import com.tenant.app.config.Constants;
 import com.tenant.app.domain.Employee;
+import com.tenant.app.domain.User;
 import com.tenant.app.repository.EmployeeRepository;
+import com.tenant.app.service.dto.AdminUserDTO;
 import com.tenant.app.service.dto.EmployeeDTO;
 import com.tenant.app.service.mapper.EmployeeMapper;
+import java.util.HashSet;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
@@ -22,12 +27,13 @@ public class EmployeeService {
     private final Logger log = LoggerFactory.getLogger(EmployeeService.class);
 
     private final EmployeeRepository employeeRepository;
-
     private final EmployeeMapper employeeMapper;
+    private final UserService userService;
 
-    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper) {
+    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper, UserService userService) {
         this.employeeRepository = employeeRepository;
         this.employeeMapper = employeeMapper;
+        this.userService = userService;
     }
 
     /**
@@ -38,7 +44,23 @@ public class EmployeeService {
      */
     public Mono<EmployeeDTO> save(EmployeeDTO employeeDTO) {
         log.debug("Request to save Employee : {}", employeeDTO);
-        return employeeRepository.save(employeeMapper.toEntity(employeeDTO)).map(employeeMapper::toDto);
+
+        // Create user account for employee
+        AdminUserDTO userDTO = new AdminUserDTO();
+        userDTO.setLogin(employeeDTO.getEmail().toLowerCase());
+        userDTO.setFirstName(employeeDTO.getFirstName());
+        userDTO.setLastName(employeeDTO.getLastName());
+        userDTO.setEmail(employeeDTO.getEmail());
+        userDTO.setActivated(true);
+
+        Set<String> authorities = new HashSet<>();
+        authorities.add(Constants.ROLE_EMPLOYEE);
+        userDTO.setAuthorities(authorities);
+
+        return userService
+            .registerUser(userDTO, Constants.DEFAULT_PASSWORD)
+            .then(employeeRepository.save(employeeMapper.toEntity(employeeDTO)))
+            .map(employeeMapper::toDto);
     }
 
     /**
